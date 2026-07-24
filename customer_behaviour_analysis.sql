@@ -13,6 +13,12 @@ where discount_applied = 'Yes' and purchase_amount >= (select AVG(purchase_amoun
 
 -- Q3. Which are the top 5 products with the highest average review rating?
 
+select item_purchased, round(avg(review_rating::numeric),2) as "Average Product Rating"
+from customer
+group by item_purchased
+order by avg(review_rating) desc
+limit 5
+
 
 --Q4. Compare the average Purchase Amounts between Standard and Express Shipping. 
 select shipping_type, 
